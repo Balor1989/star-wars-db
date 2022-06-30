@@ -1,9 +1,9 @@
 const Header = () => {
   return (
-    <header>
+    <header className="d-flex align-items-center">
       <h1>Star Wars</h1>
       <nav>
-        <ul>
+        <ul className="d-flex">
           <li>People</li>
           <li>Planets</li>
           <li>Starships</li>
