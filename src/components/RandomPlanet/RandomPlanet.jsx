@@ -6,53 +6,41 @@ class RandomPlanet extends Component {
 
   state = {
     id: null,
-    name: null,
-    population: null,
-    rotationPeriod: null,
-    diameter: null,
+    planet: {},
   };
-  constructor() {
-    super();
+
+  componentDidMount() {
     this.updatePlanet();
-  }
-  loadingPlanet(planet) {
-    this.setState({
-      name: planet.name,
-      population: planet.population,
-      rotationPeriod: planet.rotation_period,
-      diameter: planet.diameter,
-      id: planet.id,
-    });
   }
 
   async updatePlanet() {
-    const id = 10;
+    const id = Math.floor(Math.random() * 25 + 2);
     const planet = await this.apiService.getPlanet(id);
-    return this.loadingPlanet(planet);
+    return this.setState({ planet: planet, id: id });
   }
 
   render() {
-    const { id, population, rotationPeriod, diameter, name } = this.state;
+    const { id, planet } = this.state;
     return (
       <div>
         <img
-          src={`https://starwars-visualguide.com/assets/img/planets/2.jpg`}
+          src={`https://starwars-visualguide.com/assets/img/planets/${id}.jpg`}
           alt=""
         />
         <div>
-          <h2>{name}</h2>
+          <h2>{planet.name}</h2>
           <ul className="list-group">
             <li className="list-group-item">
               <span>population</span>
-              <span>{population}</span>
+              <span>{planet.population}</span>
             </li>
             <li className="list-group-item">
               <span>rotationPeriod</span>
-              <span>{rotationPeriod}</span>
+              <span>{planet.rotation_period}</span>
             </li>
             <li className="list-group-item">
               <span>diameter</span>
-              <span>{diameter}</span>
+              <span>{planet.diameter}</span>
             </li>
           </ul>
         </div>
