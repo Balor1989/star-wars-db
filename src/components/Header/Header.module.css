@@ -1,0 +1,33 @@
+.header {
+  margin-top: 10px;
+  padding-left: 10px;
+  padding-bottom: 30px;
+}
+
+.navItem {
+  cursor: pointer;
+  list-style: none;
+  margin: 0;
+  padding: 7px 15px;
+  border-radius: 3px;
+}
+
+.navItem:hover {
+  background-color: #444;
+}
+
+.headerTitle a:hover {
+  text-decoration: none;
+}
+
+.headerTitle a {
+  color: white;
+}
+
+.headerTitle a:hover {
+  color: #00bc8c;
+}
+
+.headerTitle {
+  margin-right: 100px;
+}

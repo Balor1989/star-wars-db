@@ -1,12 +1,16 @@
+import s from "./Header.module.css";
+
 const Header = () => {
   return (
-    <header className="d-flex align-items-center">
-      <h1>Star Wars</h1>
+    <header className={`d-flex align-items-center ${s.header}`}>
+      <h1 className={s.headerTitle}>
+        <a href="./index.html ">Star Wars</a>
+      </h1>
       <nav>
         <ul className="d-flex">
-          <li>People</li>
-          <li>Planets</li>
-          <li>Starships</li>
+          <li className={s.navItem}>People</li>
+          <li className={s.navItem}>Planets</li>
+          <li className={s.navItem}>Starships</li>
         </ul>
       </nav>
     </header>

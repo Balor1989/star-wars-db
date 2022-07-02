@@ -22,25 +22,26 @@ class RandomPlanet extends Component {
   render() {
     const { id, planet } = this.state;
     return (
-      <div>
+      <div className="d-flex">
         <img
           src={`https://starwars-visualguide.com/assets/img/planets/${id}.jpg`}
-          alt=""
+          alt="planet"
+          width={150}
         />
         <div>
           <h2>{planet.name}</h2>
           <ul className="list-group">
             <li className="list-group-item">
-              <span>population</span>
-              <span>{planet.population}</span>
+              <span>population:</span>
+              <span>{` ${planet.population} people`}</span>
             </li>
             <li className="list-group-item">
-              <span>rotationPeriod</span>
-              <span>{planet.rotation_period}</span>
+              <span>rotationPeriod:</span>
+              <span>{` ${planet.rotation_period} hours`}</span>
             </li>
             <li className="list-group-item">
-              <span>diameter</span>
-              <span>{planet.diameter}</span>
+              <span>diameter: </span>
+              <span>{` ${planet.diameter} miles`}</span>
             </li>
           </ul>
         </div>
