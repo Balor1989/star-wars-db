@@ -31,6 +31,15 @@ export default class ApiService {
     const starship = await this.getResourse(`starships/${id}/`);
     return starship;
   }
+  async getAllPeople() {
+    const allPeople = await this.getResourse(`people/`);
+    return allPeople;
+  }
+
+  async getPerson(id) {
+    const person = await this.getResourse(`people/${id}/`);
+    return person;
+  }
 
   #exstractId(item) {
     const regExpId = /\/([0-9]*)\/$/;
