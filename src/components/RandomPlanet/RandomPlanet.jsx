@@ -5,7 +5,6 @@ class RandomPlanet extends Component {
   apiService = new ApiService();
 
   state = {
-    id: null,
     planet: {},
   };
 
@@ -16,11 +15,13 @@ class RandomPlanet extends Component {
   async updatePlanet() {
     const id = Math.floor(Math.random() * 25 + 2);
     const planet = await this.apiService.getPlanet(id);
-    return this.setState({ planet: planet, id: id });
+    return this.setState({ planet: planet });
   }
 
   render() {
-    const { id, planet } = this.state;
+    const { id, population, rotationPeriod, diameter, name } =
+      this.state.planet;
+
     return (
       <div className="d-flex">
         <img
@@ -29,19 +30,19 @@ class RandomPlanet extends Component {
           width={150}
         />
         <div>
-          <h2>{planet.name}</h2>
+          <h2>{name}</h2>
           <ul className="list-group">
             <li className="list-group-item">
               <span>population:</span>
-              <span>{` ${planet.population} people`}</span>
+              <span>{` ${population} people`}</span>
             </li>
             <li className="list-group-item">
               <span>rotationPeriod:</span>
-              <span>{` ${planet.rotation_period} hours`}</span>
+              <span>{` ${rotationPeriod} hours`}</span>
             </li>
             <li className="list-group-item">
               <span>diameter: </span>
-              <span>{` ${planet.diameter} miles`}</span>
+              <span>{` ${diameter} miles`}</span>
             </li>
           </ul>
         </div>

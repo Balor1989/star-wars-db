@@ -13,8 +13,37 @@ export default class ApiService {
     }
   };
 
+  async getAllPlanets() {
+    const allPlanets = await this.getResourse(`planets/`);
+    return allPlanets;
+  }
+
   async getPlanet(id) {
     const planet = await this.getResourse(`planets/${id}/`);
-    return planet;
+    return this.#transformPlanet(planet);
+  }
+  async getAllStarships() {
+    const allStarships = await this.getResourse(`starships/`);
+    return allStarships;
+  }
+
+  async getStarship(id) {
+    const starship = await this.getResourse(`starships/${id}/`);
+    return starship;
+  }
+
+  #exstractId(item) {
+    const regExpId = /\/([0-9]*)\/$/;
+    return item.url.match(regExpId)[1];
+  }
+
+  #transformPlanet(planet) {
+    return {
+      id: this.#exstractId(planet),
+      name: planet.name,
+      population: planet.population,
+      rotationPeriod: planet.rotation_period,
+      diameter: planet.diameter,
+    };
   }
 }
