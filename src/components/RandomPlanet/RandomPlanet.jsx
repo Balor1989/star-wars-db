@@ -21,7 +21,7 @@ class RandomPlanet extends Component {
   updatePlanet = async () => {
     try {
       this.setState({ loading: true, visible: false });
-      const id = Math.floor(Math.random() * 19 + 2);
+      const id = Math.floor(Math.random() * 40 + 2);
       const planet = await this.apiService.getPlanet(id);
       return this.setState({ planet: planet, loading: false, visible: true });
     } catch (err) {
@@ -46,6 +46,9 @@ class RandomPlanet extends Component {
             <img
               className={s.planetImage}
               src={`https://starwars-visualguide.com/assets/img/planets/${id}.jpg`}
+              onError={(e) =>
+                (e.target.src = `https://starwars-visualguide.com/assets/img/placeholder.jpg`)
+              }
               alt="planet"
               width={150}
             />
