@@ -1,6 +1,7 @@
 import { Component } from "react";
 import ApiService from "../../servises/ApiService";
 import Spinner from "../Spinner";
+import s from "./RandomPlanet.module.css";
 
 class RandomPlanet extends Component {
   apiService = new ApiService();
@@ -16,7 +17,8 @@ class RandomPlanet extends Component {
   }
 
   async updatePlanet() {
-    const id = Math.floor(Math.random() * 25 + 2);
+    this.setState({ loading: true, visible: false });
+    const id = Math.floor(Math.random() * 19 + 2);
     const planet = await this.apiService.getPlanet(id);
     return this.setState({ planet: planet, loading: false, visible: true });
   }
@@ -29,29 +31,31 @@ class RandomPlanet extends Component {
     } = this.state;
 
     return (
-      <div className="d-flex">
+      <div className={`${s.randomPlanet} jumbotron rounded`}>
         {loading && <Spinner />}
         {visible && (
           <>
             <img
+              className={s.planetImage}
               src={`https://starwars-visualguide.com/assets/img/planets/${id}.jpg`}
               alt="planet"
               width={150}
             />
+
             <div>
-              <h2>{name}</h2>
-              <ul className="list-group">
-                <li className="list-group-item">
-                  <span>population:</span>
-                  <span>{` ${population} people`}</span>
+              <h2 className={s.planetTitle}>{name}</h2>
+              <ul className={s.listGroup}>
+                <li className={s.listGroupItem}>
+                  <span className={s.itemTitle}>population:</span>
+                  <span>{`${population} people`}</span>
                 </li>
-                <li className="list-group-item">
-                  <span>rotationPeriod:</span>
-                  <span>{` ${rotationPeriod} hours`}</span>
+                <li className={s.listGroupItem}>
+                  <span className={s.itemTitle}>rotationPeriod:</span>
+                  <span>{`${rotationPeriod} hours`}</span>
                 </li>
-                <li className="list-group-item">
-                  <span>diameter: </span>
-                  <span>{` ${diameter} miles`}</span>
+                <li className={s.listGroupItem}>
+                  <span className={s.itemTitle}>diameter: </span>
+                  <span>{`${diameter} miles`}</span>
                 </li>
               </ul>
             </div>
