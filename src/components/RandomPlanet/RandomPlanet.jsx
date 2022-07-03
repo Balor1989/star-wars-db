@@ -31,7 +31,7 @@ class RandomPlanet extends Component {
     } = this.state;
 
     return (
-      <div className={`${s.randomPlanet} jumbotron rounded`}>
+      <div className={`${s.randomPlanet} rounded`}>
         {loading && <Spinner />}
         {visible && (
           <>
