@@ -1,5 +1,6 @@
 import { Component } from "react";
 import ApiService from "../../servises/ApiService";
+import ErrorMessage from "../Error";
 import Spinner from "../Spinner";
 import s from "./RandomPlanet.module.css";
 
@@ -10,6 +11,7 @@ class RandomPlanet extends Component {
     planet: {},
     loading: true,
     visible: false,
+    error: false,
   };
 
   componentDidMount() {
@@ -17,10 +19,14 @@ class RandomPlanet extends Component {
   }
 
   async updatePlanet() {
-    this.setState({ loading: true, visible: false });
-    const id = Math.floor(Math.random() * 19 + 2);
-    const planet = await this.apiService.getPlanet(id);
-    return this.setState({ planet: planet, loading: false, visible: true });
+    try {
+      this.setState({ loading: true, visible: false });
+      const id = Math.floor(Math.random() * 19 + 2);
+      const planet = await this.apiService.getPlanet(id);
+      return this.setState({ planet: planet, loading: false, visible: true });
+    } catch (err) {
+      this.setState({ error: true, loading: false });
+    }
   }
 
   render() {
@@ -28,13 +34,15 @@ class RandomPlanet extends Component {
       planet: { id, population, rotationPeriod, diameter, name },
       loading,
       visible,
+      error,
     } = this.state;
 
     return (
       <div className={`${s.randomPlanet} rounded`}>
+        {error && <ErrorMessage />}
         {loading && <Spinner />}
         {visible && (
-          <>
+          <div className={s.planetContainer}>
             <img
               className={s.planetImage}
               src={`https://starwars-visualguide.com/assets/img/planets/${id}.jpg`}
@@ -59,7 +67,7 @@ class RandomPlanet extends Component {
                 </li>
               </ul>
             </div>
-          </>
+          </div>
         )}
       </div>
     );
