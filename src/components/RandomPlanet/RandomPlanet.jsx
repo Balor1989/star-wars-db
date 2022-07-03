@@ -18,7 +18,7 @@ class RandomPlanet extends Component {
     this.updatePlanet();
   }
 
-  async updatePlanet() {
+  updatePlanet = async () => {
     try {
       this.setState({ loading: true, visible: false });
       const id = Math.floor(Math.random() * 19 + 2);
@@ -27,7 +27,7 @@ class RandomPlanet extends Component {
     } catch (err) {
       this.setState({ error: true, loading: false });
     }
-  }
+  };
 
   render() {
     const {
