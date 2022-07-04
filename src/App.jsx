@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import RandomPlanet from "./components/RandomPlanet/RandomPlanet";
 import s from "./App.module.css";
 import ItemList from "./components/ItemList";
+import PersonDetails from "./components/PersonDetails";
 
 export default class App extends Component {
   state = {
@@ -24,6 +25,9 @@ export default class App extends Component {
           <div className={`row mb2 ${s.renderBox}`}>
             <div className={`col-md-6 ${s.itemListBox}`}>
               <ItemList onPersonSelected={this.personSelected} />
+            </div>
+            <div className={`col-md-6 ${s.itemListBox}`}>
+              <PersonDetails />
             </div>
           </div>
         </main>

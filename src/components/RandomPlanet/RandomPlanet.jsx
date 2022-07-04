@@ -9,6 +9,7 @@ class RandomPlanet extends Component {
 
   state = {
     planet: {},
+    planetImage: "",
     loading: true,
     visible: false,
     error: false,
@@ -23,8 +24,14 @@ class RandomPlanet extends Component {
     try {
       this.setState({ loading: true, visible: false });
       const id = Math.floor(Math.random() * 40 + 1);
+      const planetImage = `https://starwars-visualguide.com/assets/img/planets/${id}.jpg`;
       const planet = await this.apiService.getPlanet(id);
-      return this.setState({ planet: planet, loading: false, visible: true });
+      return this.setState({
+        planet: planet,
+        loading: false,
+        visible: true,
+        planetImage: planetImage,
+      });
     } catch (err) {
       this.setState({ error: true, loading: false });
     }
@@ -32,10 +39,11 @@ class RandomPlanet extends Component {
 
   render() {
     const {
-      planet: { id, population, rotationPeriod, diameter, name },
+      planet: { population, rotationPeriod, diameter, name },
       loading,
       visible,
       error,
+      planetImage,
     } = this.state;
 
     return (
@@ -46,7 +54,7 @@ class RandomPlanet extends Component {
           <div className={s.planetContainer}>
             <img
               className={s.planetImage}
-              src={`https://starwars-visualguide.com/assets/img/planets/${id}.jpg`}
+              src={planetImage}
               onError={(e) =>
                 (e.target.src = `https://starwars-visualguide.com/assets/img/placeholder.jpg`)
               }
