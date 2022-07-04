@@ -31,16 +31,19 @@ class ItemList extends Component {
   };
 
   renderPerson(array) {
+    // eslint-disable-next-line array-callback-return
     return array.map((item) => {
-      return (
-        <li
-          key={item.id}
-          className={`list-group-item ${s.item}`}
-          onClick={() => this.props.onPersonSelected(item.id)}
-        >
-          {item.name}
-        </li>
-      );
+      if (item.id <= 6) {
+        return (
+          <li
+            key={item.id}
+            className={`list-group-item ${s.item}`}
+            onClick={() => this.props.onPersonSelected(item.id)}
+          >
+            {item.name}
+          </li>
+        );
+      }
     });
   }
 
