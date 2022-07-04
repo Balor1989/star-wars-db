@@ -8,10 +8,6 @@ class PersonDetails extends Component {
 
   state = { person: null, visible: false, loading: false };
 
-  componentDidMount() {
-    this.updatePerson();
-  }
-
   componentDidUpdate(prevProps) {
     if (this.props.personId !== prevProps.personId) {
       this.updatePerson();
@@ -32,12 +28,12 @@ class PersonDetails extends Component {
     const { person, visible, loading } = this.state;
     return (
       <>
-        {!person && (
+        {!person && !loading && (
           <div className={`${s.noPerson} card `}>
             <h3>Select a person from a list</h3>
           </div>
         )}
-        {loading && person && <Spinner />}
+        {loading && <Spinner />}
         {visible && (
           <div className={`${s.personDetails} card `}>
             <img
