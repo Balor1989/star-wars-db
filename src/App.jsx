@@ -7,7 +7,7 @@ import PersonDetails from "./components/PersonDetails";
 
 export default class App extends Component {
   state = {
-    personId: null,
+    personId: 1,
   };
 
   personSelected = (id) => {
@@ -27,7 +27,7 @@ export default class App extends Component {
               <ItemList onPersonSelected={this.personSelected} />
             </div>
             <div className={`col-md-6 ${s.itemListBox}`}>
-              <PersonDetails />
+              <PersonDetails personId={this.state.personId} />
             </div>
           </div>
         </main>
