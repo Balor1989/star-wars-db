@@ -16,13 +16,13 @@ class RandomPlanet extends Component {
 
   componentDidMount() {
     this.updatePlanet();
-    this.interval = setInterval(this.updatePlanet, 10000);
+    // this.interval = setInterval(this.updatePlanet, 10000);
   }
 
   updatePlanet = async () => {
     try {
       this.setState({ loading: true, visible: false });
-      const id = Math.floor(Math.random() * 40 + 2);
+      const id = Math.floor(Math.random() * 40 + 1);
       const planet = await this.apiService.getPlanet(id);
       return this.setState({ planet: planet, loading: false, visible: true });
     } catch (err) {

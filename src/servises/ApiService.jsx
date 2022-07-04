@@ -15,7 +15,7 @@ export default class ApiService {
 
   async getAllPlanets() {
     const allPlanets = await this.getResourse(`planets/`);
-    return allPlanets;
+    return allPlanets.results.map((planet) => this.#transformPlanet(planet));
   }
 
   async getPlanet(id) {
@@ -33,12 +33,12 @@ export default class ApiService {
   }
   async getAllPeople() {
     const allPeople = await this.getResourse(`people/`);
-    return allPeople;
+    return allPeople.results.map((person) => this.#transformPerson(person));
   }
 
   async getPerson(id) {
     const person = await this.getResourse(`people/${id}/`);
-    return person;
+    return this.#transformPerson(person);
   }
 
   #exstractId(item) {
@@ -53,6 +53,16 @@ export default class ApiService {
       population: planet.population,
       rotationPeriod: planet.rotation_period,
       diameter: planet.diameter,
+    };
+  }
+  #transformPerson(person) {
+    return {
+      id: this.#exstractId(person),
+      name: person.name,
+      gender: person.gender,
+      birthYear: person.birth_year,
+      height: person.height,
+      mass: person.mass,
     };
   }
 }
