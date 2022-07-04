@@ -16,3 +16,8 @@
 .description {
   color: #839496;
 }
+.noPerson {
+  text-align: center;
+  padding: 15px;
+  background-color: #033e4d;
+}

@@ -11,6 +11,7 @@
   margin: 0;
   padding: 7px 15px;
   border-radius: 3px;
+  transition: background-color 300ms ease;
 }
 
 .navItem:hover {
@@ -18,15 +19,14 @@
 }
 
 .headerTitle a:hover {
-  text-decoration: none;
+  text-decoration: underline;
+  color: #ffffff;
 }
 
 .headerTitle a {
-  color: white;
-}
-
-.headerTitle a:hover {
-  color: #00bc8c;
+  text-decoration: none;
+  color: #839496;
+  transition: text-decoration 300ms ease, color 300ms ease;
 }
 
 .headerTitle {

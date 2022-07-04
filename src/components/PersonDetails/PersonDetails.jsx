@@ -6,7 +6,7 @@ import s from "./PersonDetails.module.css";
 class PersonDetails extends Component {
   apiService = new ApiService();
 
-  state = { person: null, visible: false, loading: true };
+  state = { person: null, visible: false, loading: false };
 
   componentDidMount() {
     this.updatePerson();
@@ -32,12 +32,20 @@ class PersonDetails extends Component {
     const { person, visible, loading } = this.state;
     return (
       <>
-        {loading && <Spinner />}
+        {!person && (
+          <div className={`${s.noPerson} card `}>
+            <h3>Select a person from a list</h3>
+          </div>
+        )}
+        {loading && person && <Spinner />}
         {visible && (
           <div className={`${s.personDetails} card `}>
             <img
               className={s.image}
               src={`https://starwars-visualguide.com/assets/img/characters/${person.id}.jpg`}
+              onError={(e) =>
+                (e.target.src = `https://starwars-visualguide.com/assets/img/placeholder.jpg`)
+              }
               alt="person"
               width={200}
             />
@@ -57,7 +65,7 @@ class PersonDetails extends Component {
                   <span className={s.term}>Height:</span>
                   <span className={s.description}>
                     {" "}
-                    {`${person.height} sm`}
+                    {`${person.height} cm`}
                   </span>
                 </li>
                 <li className="list-group-item">

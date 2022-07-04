@@ -2,6 +2,7 @@
   cursor: pointer;
   background-color: #033e4d;
   color: #839496;
+  transition: background-color 300ms ease;
 }
 
 .item:hover {
