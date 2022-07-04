@@ -1,8 +1,14 @@
+.personBox {
+  text-align: center;
+  padding: 15px;
+  border: 1px solid #033e4d;
+  background-color: #033e4d;
+}
+
 .personDetails {
   display: flex;
+  text-align: start;
   flex-direction: row;
-  padding: 15px;
-  background-color: #033e4d;
 }
 .image {
   width: 30%;
@@ -20,4 +26,7 @@
   text-align: center;
   padding: 15px;
   background-color: #033e4d;
+}
+.spinner {
+  text-align: center;
 }

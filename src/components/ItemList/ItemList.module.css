@@ -1,3 +1,13 @@
+.itemBox {
+  text-align: center;
+  padding: 15px;
+  border: 1px solid #033e4d;
+  background-color: #033e4d;
+}
+.itemList {
+  text-align: start;
+}
+
 .item {
   cursor: pointer;
   background-color: #033e4d;

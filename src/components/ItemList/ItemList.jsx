@@ -47,14 +47,14 @@ class ItemList extends Component {
   render() {
     const { allPeople, visible, loading } = this.state;
     return (
-      <>
+      <div className={`${s.itemBox} rounded`}>
         {loading && <Spinner />}
         {visible && (
-          <ul className="item-list list-group rounded">
+          <ul className={`${s.itemList} list-group rounded`}>
             {this.renderPerson(allPeople)}
           </ul>
         )}
-      </>
+      </div>
     );
   }
 }

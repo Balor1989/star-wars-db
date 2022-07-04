@@ -27,15 +27,11 @@ class PersonDetails extends Component {
   render() {
     const { person, visible, loading } = this.state;
     return (
-      <>
-        {!person && !loading && (
-          <div className={`${s.noPerson} card `}>
-            <h3>Select a person from a list</h3>
-          </div>
-        )}
+      <div className={`${s.personBox} rounded`}>
+        {!person && !loading && <h3>Select a person from a list</h3>}
         {loading && <Spinner />}
         {visible && (
-          <div className={`${s.personDetails} card `}>
+          <div className={`${s.personDetails}`}>
             <img
               className={s.image}
               src={`https://starwars-visualguide.com/assets/img/characters/${person.id}.jpg`}
@@ -72,7 +68,7 @@ class PersonDetails extends Component {
             </div>
           </div>
         )}
-      </>
+      </div>
     );
   }
 }
