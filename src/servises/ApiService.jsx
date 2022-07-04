@@ -46,7 +46,7 @@ export default class ApiService {
     return item.url.match(regExpId)[1];
   }
 
-  #transformPlanet(planet) {
+  #transformPlanet = (planet) => {
     return {
       id: this.#exstractId(planet),
       name: planet.name,
@@ -54,8 +54,8 @@ export default class ApiService {
       rotationPeriod: planet.rotation_period,
       diameter: planet.diameter,
     };
-  }
-  #transformPerson(person) {
+  };
+  #transformPerson = (person) => {
     return {
       id: this.#exstractId(person),
       name: person.name,
@@ -64,5 +64,5 @@ export default class ApiService {
       height: person.height,
       mass: person.mass,
     };
-  }
+  };
 }

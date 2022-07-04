@@ -1,6 +1,7 @@
 import { Component } from "react";
 import ApiService from "../../servises/ApiService";
 import Spinner from "../Spinner";
+import s from "./ItemList.module.css";
 
 class ItemList extends Component {
   apiService = new ApiService();
@@ -29,16 +30,28 @@ class ItemList extends Component {
     }
   };
 
+  renderPerson(array) {
+    return array.map((item) => {
+      return (
+        <li
+          key={item.id}
+          className={`list-group-item ${s.item}`}
+          onClick={() => this.props.onPersonSelected(item.id)}
+        >
+          {item.name}
+        </li>
+      );
+    });
+  }
+
   render() {
     const { allPeople, visible, loading } = this.state;
     return (
       <>
         {loading && <Spinner />}
         {visible && (
-          <ul className="item-list list-group">
-            <li className="list-group-item">Luke Skywalker</li>
-            <li className="list-group-item">Darth Vader</li>
-            <li className="list-group-item">R2-D2</li>
+          <ul className="item-list list-group rounded">
+            {this.renderPerson(allPeople)}
           </ul>
         )}
       </>

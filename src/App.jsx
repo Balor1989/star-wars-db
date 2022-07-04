@@ -5,18 +5,25 @@ import s from "./App.module.css";
 import ItemList from "./components/ItemList";
 
 export default class App extends Component {
+  state = {
+    personId: null,
+  };
+
+  personSelected = (id) => {
+    this.setState({
+      personId: id,
+    });
+  };
+
   render() {
     return (
       <div className={s.container}>
         <Header />
         <main className={s.mainContainer}>
           <RandomPlanet />
-          <div className={`row mb2 ${s.itemListContainer}`}>
-            <div className="col-md-6">
-              <ItemList />
-            </div>
-            <div className="col-md-6">
-              <ItemList />
+          <div className={`row mb2 ${s.renderBox}`}>
+            <div className={`col-md-6 ${s.itemListBox}`}>
+              <ItemList onPersonSelected={this.personSelected} />
             </div>
           </div>
         </main>
