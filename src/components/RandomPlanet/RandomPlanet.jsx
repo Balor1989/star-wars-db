@@ -9,7 +9,6 @@ class RandomPlanet extends Component {
 
   state = {
     planet: {},
-    planetImage: "",
     loading: true,
     visible: false,
     error: false,
@@ -17,20 +16,21 @@ class RandomPlanet extends Component {
 
   componentDidMount() {
     this.updatePlanet();
-    // this.interval = setInterval(this.updatePlanet, 10000);
+    this.interval = setInterval(this.updatePlanet, 10000);
+  }
+  componentWillUnmount() {
+    clearInterval(this.interval);
   }
 
   updatePlanet = async () => {
     try {
       this.setState({ loading: true, visible: false });
-      const id = Math.floor(Math.random() * 40 + 1);
-      const planetImage = `https://starwars-visualguide.com/assets/img/planets/${id}.jpg`;
+      const id = Math.floor(Math.random() * 20 + 1);
       const planet = await this.apiService.getPlanet(id);
       return this.setState({
         planet: planet,
         loading: false,
         visible: true,
-        planetImage: planetImage,
       });
     } catch (err) {
       this.setState({ error: true, loading: false });
@@ -39,11 +39,10 @@ class RandomPlanet extends Component {
 
   render() {
     const {
-      planet: { population, rotationPeriod, diameter, name },
+      planet: { id, population, rotationPeriod, diameter, name },
       loading,
       visible,
       error,
-      planetImage,
     } = this.state;
 
     return (
@@ -54,7 +53,7 @@ class RandomPlanet extends Component {
           <div className={s.planetContainer}>
             <img
               className={s.planetImage}
-              src={planetImage}
+              src={`https://starwars-visualguide.com/assets/img/planets/${id}.jpg`}
               onError={(e) =>
                 (e.target.src = `https://starwars-visualguide.com/assets/img/placeholder.jpg`)
               }
@@ -66,15 +65,15 @@ class RandomPlanet extends Component {
               <h2 className={s.planetTitle}>{name}</h2>
               <ul className={s.listGroup}>
                 <li className={s.listGroupItem}>
-                  <span className={s.itemTitle}>population:</span>
+                  <span className={s.itemTitle}>Population:</span>
                   <span>{`${population} people`}</span>
                 </li>
                 <li className={s.listGroupItem}>
-                  <span className={s.itemTitle}>rotationPeriod:</span>
+                  <span className={s.itemTitle}>Rotation Period:</span>
                   <span>{`${rotationPeriod} hours`}</span>
                 </li>
                 <li className={s.listGroupItem}>
-                  <span className={s.itemTitle}>diameter: </span>
+                  <span className={s.itemTitle}>Diameter: </span>
                   <span>{`${diameter} miles`}</span>
                 </li>
               </ul>

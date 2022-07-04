@@ -6,7 +6,6 @@ export default class ApiService {
   getResourse = async (url) => {
     try {
       const res = await axios.get(`${this.BASE_URL}${url}`);
-      console.log(res);
       return res.data;
     } catch (err) {
       console.error(err);
