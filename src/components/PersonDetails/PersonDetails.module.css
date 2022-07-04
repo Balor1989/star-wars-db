@@ -10,5 +10,9 @@
   border-radius: 10px;
 }
 .term {
-  margin-right: 7px;
+  margin-right: 5px;
+  color: #839496;
+}
+.description {
+  color: #839496;
 }

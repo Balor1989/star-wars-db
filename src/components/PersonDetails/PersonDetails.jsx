@@ -17,19 +17,19 @@ class PersonDetails extends Component {
           <ul className="list-group list-group-flush">
             <li className="list-group-item">
               <span className={s.term}>Gender:</span>
-              <span>male</span>
+              <span className={s.description}>male</span>
             </li>
             <li className="list-group-item">
               <span className={s.term}>Birth Year:</span>
-              <span>43</span>
+              <span className={s.description}>43</span>
             </li>
             <li className="list-group-item">
               <span className={s.term}>Height:</span>
-              <span> 100</span>
+              <span className={s.description}> 100 sm</span>
             </li>
             <li className="list-group-item">
               <span className={s.term}>Mass:</span>
-              <span> 60</span>
+              <span className={s.description}> 60 kg</span>
             </li>
           </ul>
         </div>
