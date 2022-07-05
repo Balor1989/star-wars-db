@@ -1,13 +1,10 @@
 import { Component } from "react";
-import ApiService from "../../servises/ApiService";
 import Spinner from "../Spinner";
 import s from "./ItemList.module.css";
 
 class ItemList extends Component {
-  apiService = new ApiService();
-
   state = {
-    allPeople: {},
+    items: {},
     visible: false,
     loading: true,
   };
@@ -18,10 +15,10 @@ class ItemList extends Component {
 
   onGetAllPeople = async () => {
     try {
-      const allPeople = await this.apiService.getAllPeople();
+      const items = await this.props.getItem();
 
       return this.setState({
-        allPeople: allPeople,
+        items: items,
         visible: true,
         loading: false,
       });
@@ -30,7 +27,7 @@ class ItemList extends Component {
     }
   };
 
-  renderPerson(array) {
+  renderItem(array) {
     // eslint-disable-next-line array-callback-return
     return array.map((item) => {
       if (item.id <= 6) {
@@ -38,7 +35,7 @@ class ItemList extends Component {
           <li
             key={item.id}
             className={`list-group-item ${s.item}`}
-            onClick={() => this.props.onPersonSelected(item.id)}
+            onClick={() => this.props.onItemSelected(item.id)}
           >
             {item.name}
           </li>
@@ -48,13 +45,13 @@ class ItemList extends Component {
   }
 
   render() {
-    const { allPeople, visible, loading } = this.state;
+    const { items, visible, loading } = this.state;
     return (
       <div className={`${s.itemBox} rounded`}>
         {loading && <Spinner />}
         {visible && (
           <ul className={`${s.itemList} list-group rounded`}>
-            {this.renderPerson(allPeople)}
+            {this.renderItem(items)}
           </ul>
         )}
       </div>

@@ -12,35 +12,34 @@ export default class ApiService {
     }
   };
 
-  async getAllPlanets() {
+  getAllPlanets = async () => {
     const allPlanets = await this.getResourse(`planets/`);
     return allPlanets.results.map((planet) => this.#transformPlanet(planet));
-  }
-
-  async getPlanet(id) {
+  };
+  getPlanet = async (id) => {
     const planet = await this.getResourse(`planets/${id}/`);
     return this.#transformPlanet(planet);
-  }
-  async getAllStarships() {
+  };
+  getAllStarships = async () => {
     const allStarships = await this.getResourse(`starships/`);
     return allStarships.results.map((starship) =>
       this.#transformStarship(starship)
     );
-  }
+  };
 
-  async getStarship(id) {
+  getStarship = async (id) => {
     const starship = await this.getResourse(`starships/${id}/`);
     return this.#transformStarship(starship);
-  }
-  async getAllPeople() {
+  };
+  getAllPeople = async () => {
     const allPeople = await this.getResourse(`people/`);
     return allPeople.results.map((person) => this.#transformPerson(person));
-  }
+  };
 
-  async getPerson(id) {
+  getPerson = async (id) => {
     const person = await this.getResourse(`people/${id}/`);
     return this.#transformPerson(person);
-  }
+  };
 
   #exstractId(item) {
     const regExpId = /\/([0-9]*)\/$/;
@@ -66,9 +65,10 @@ export default class ApiService {
       mass: person.mass,
     };
   };
+
   #transformStarship = (starship) => {
     return {
-      id: this._extractId(starship),
+      id: this.#exstractId(starship),
       name: starship.name,
       model: starship.model,
       manufacturer: starship.manufacturer,
