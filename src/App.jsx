@@ -30,6 +30,9 @@ export default class App extends Component {
               <ItemList
                 onItemSelected={this.personSelected}
                 getItem={this.apiService.getAllPeople}
+                renderItem={({ name, gender, birthYear }) =>
+                  `${name} (${gender}, ${birthYear})`
+                }
               />
             </div>
             <div className={`col-md-6 ${s.itemListBox}`}>
@@ -41,6 +44,9 @@ export default class App extends Component {
               <ItemList
                 onItemSelected={this.personSelected}
                 getItem={this.apiService.getAllPlanets}
+                renderItem={({ name, diameter, climate }) =>
+                  `${name} (${diameter} miles, ${climate})`
+                }
               />
             </div>
             <div className={`col-md-6 ${s.itemListBox}`}>
@@ -52,6 +58,7 @@ export default class App extends Component {
               <ItemList
                 onItemSelected={this.personSelected}
                 getItem={this.apiService.getAllStarships}
+                renderItem={({ name, model }) => `${name} (${model})`}
               />
             </div>
             <div className={`col-md-6 ${s.itemListBox}`}>

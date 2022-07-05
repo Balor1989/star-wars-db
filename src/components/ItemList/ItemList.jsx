@@ -28,19 +28,18 @@ class ItemList extends Component {
   };
 
   renderItem(array) {
-    // eslint-disable-next-line array-callback-return
     return array.map((item) => {
-      if (item.id <= 6) {
-        return (
-          <li
-            key={item.id}
-            className={`list-group-item ${s.item}`}
-            onClick={() => this.props.onItemSelected(item.id)}
-          >
-            {item.name}
-          </li>
-        );
-      }
+      const { id } = item;
+      const name = this.props.renderItem(item);
+      return (
+        <li
+          key={id}
+          className={`list-group-item ${s.item}`}
+          onClick={() => this.props.onItemSelected(id)}
+        >
+          {name}
+        </li>
+      );
     });
   }
 

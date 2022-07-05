@@ -53,6 +53,7 @@ export default class ApiService {
       population: planet.population,
       rotationPeriod: planet.rotation_period,
       diameter: planet.diameter,
+      climate: planet.climate,
     };
   };
   #transformPerson = (person) => {

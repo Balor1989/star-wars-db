@@ -39,7 +39,7 @@ class RandomPlanet extends Component {
 
   render() {
     const {
-      planet: { id, population, rotationPeriod, diameter, name },
+      planet: { id, population, rotationPeriod, diameter, name, climate },
       loading,
       visible,
       error,
@@ -47,7 +47,7 @@ class RandomPlanet extends Component {
 
     return (
       <div className={`${s.randomPlanet} rounded`}>
-        {error && <ErrorMessage />}
+        {error && !visible && <ErrorMessage />}
         {loading && <Spinner />}
         {visible && (
           <div className={s.planetContainer}>
@@ -75,6 +75,10 @@ class RandomPlanet extends Component {
                 <li className={s.listGroupItem}>
                   <span className={s.itemTitle}>Diameter: </span>
                   <span>{`${diameter} miles`}</span>
+                </li>
+                <li className={s.listGroupItem}>
+                  <span className={s.itemTitle}>Climate: </span>
+                  <span>{climate}</span>
                 </li>
               </ul>
             </div>
