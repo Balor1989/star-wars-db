@@ -23,12 +23,14 @@ export default class ApiService {
   }
   async getAllStarships() {
     const allStarships = await this.getResourse(`starships/`);
-    return allStarships;
+    return allStarships.results.map((starship) =>
+      this.#transformStarship(starship)
+    );
   }
 
   async getStarship(id) {
     const starship = await this.getResourse(`starships/${id}/`);
-    return starship;
+    return this.#transformStarship(starship);
   }
   async getAllPeople() {
     const allPeople = await this.getResourse(`people/`);
@@ -62,6 +64,19 @@ export default class ApiService {
       birthYear: person.birth_year,
       height: person.height,
       mass: person.mass,
+    };
+  };
+  #transformStarship = (starship) => {
+    return {
+      id: this._extractId(starship),
+      name: starship.name,
+      model: starship.model,
+      manufacturer: starship.manufacturer,
+      costInCredits: starship.cost_in_credits,
+      length: starship.length,
+      crew: starship.crew,
+      passengers: starship.passengers,
+      cargoCapacity: starship.cargo_capacity,
     };
   };
 }
