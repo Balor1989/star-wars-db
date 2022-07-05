@@ -41,10 +41,10 @@ export default class ApiService {
     return this.#transformPerson(person);
   };
 
-  #exstractId(item) {
+  #exstractId = (item) => {
     const regExpId = /\/([0-9]*)\/$/;
     return item.url.match(regExpId)[1];
-  }
+  };
 
   #transformPlanet = (planet) => {
     return {
