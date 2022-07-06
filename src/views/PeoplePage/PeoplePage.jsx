@@ -1,6 +1,7 @@
 import { Component } from "react";
+import ItemDetails from "../../components/ItemDetails";
 import ItemList from "../../components/ItemList";
-import PersonDetails from "../../components/PersonDetails";
+import RecordRow from "../../components/RecordRow";
 import ApiService from "../../servises/ApiService";
 import s from "./PeoplePage.module.css";
 
@@ -17,19 +18,30 @@ class PeoplePage extends Component {
     });
   };
   render() {
+    const { personId } = this.state;
+    const { getAllPeople, getPerson, getPersonImage } = this.apiService;
     return (
       <div className={`row mb2 ${s.renderBox}`}>
         <div className="col-md-6">
           <ItemList
             onItemSelected={this.personSelected}
-            getItem={this.apiService.getAllPeople}
+            getItem={getAllPeople}
             renderItem={({ name, gender, birthYear }) =>
               `${name} (${gender}, ${birthYear})`
             }
           />
         </div>
         <div className="col-md-6">
-          <PersonDetails personId={this.state.personId} />
+          <ItemDetails
+            itemId={personId}
+            getResult={getPerson}
+            getImageUrl={getPersonImage}
+          >
+            <RecordRow value="gender" label="Gender:" />
+            <RecordRow value="birthYear" label="Birth Year:" />
+            <RecordRow value="height" label="Height:" ending="cm" />
+            <RecordRow value="mass" label="Mass:" ending="kg" />
+          </ItemDetails>
         </div>
       </div>
     );
