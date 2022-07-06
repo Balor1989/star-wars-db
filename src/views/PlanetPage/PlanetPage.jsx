@@ -1,6 +1,7 @@
 import { Component } from "react";
+import ItemDetails from "../../components/ItemDetails";
 import ItemList from "../../components/ItemList";
-import PersonDetails from "../../components/PersonDetails";
+
 import ApiService from "../../servises/ApiService";
 import s from "./PlanetPage.module.css";
 
@@ -29,7 +30,7 @@ class PlanetPage extends Component {
           />
         </div>
         <div className={`col-md-6 ${s.itemListBox}`}>
-          <PersonDetails personId={this.state.planetId} />
+          <ItemDetails personId={this.state.planetId} />
         </div>
       </div>
     );
