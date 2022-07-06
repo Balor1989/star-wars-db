@@ -41,6 +41,18 @@ export default class ApiService {
     return this.#transformPerson(person);
   };
 
+  getPlanetImage = (id) => {
+    return `https://starwars-visualguide.com/assets/img/planets/${id}.jpg`;
+  };
+
+  getPersonImage = (id) => {
+    return `https://starwars-visualguide.com/assets/img/characters/${id}.jpg`;
+  };
+
+  getStarshipImage = (id) => {
+    return `https://starwars-visualguide.com/assets/img/starships/${id}.jpg`;
+  };
+
   #exstractId = (item) => {
     const regExpId = /\/([0-9]*)\/$/;
     return item.url.match(regExpId)[1];

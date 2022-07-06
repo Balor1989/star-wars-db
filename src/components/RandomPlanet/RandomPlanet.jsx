@@ -53,7 +53,7 @@ class RandomPlanet extends Component {
           <div className={s.planetContainer}>
             <img
               className={s.planetImage}
-              src={`https://starwars-visualguide.com/assets/img/planets/${id}.jpg`}
+              src={this.apiService.getPlanetImage(id)}
               onError={(e) =>
                 (e.target.src = `https://starwars-visualguide.com/assets/img/placeholder.jpg`)
               }
