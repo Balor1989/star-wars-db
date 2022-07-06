@@ -60,37 +60,49 @@ export default class ApiService {
   };
 
   #transformPlanet = (planet) => {
+    const { name, population, diameter, climate, rotation_period } = planet;
     return {
       id: this.#exstractId(planet),
-      name: planet.name,
-      population: planet.population,
-      rotationPeriod: planet.rotation_period,
-      diameter: planet.diameter,
-      climate: planet.climate,
+      name,
+      population,
+      rotationPeriod: rotation_period,
+      diameter,
+      climate,
     };
   };
   #transformPerson = (person) => {
+    const { name, gender, birth_year, height, mass } = person;
     return {
       id: this.#exstractId(person),
-      name: person.name,
-      gender: person.gender,
-      birthYear: person.birth_year,
-      height: person.height,
-      mass: person.mass,
+      name,
+      gender,
+      birthYear: birth_year,
+      height,
+      mass,
     };
   };
 
   #transformStarship = (starship) => {
+    const {
+      name,
+      model,
+      manufacturer,
+      cost_in_credits,
+      length,
+      crew,
+      passengers,
+      cargo_capacity,
+    } = starship;
     return {
       id: this.#exstractId(starship),
-      name: starship.name,
-      model: starship.model,
-      manufacturer: starship.manufacturer,
-      costInCredits: starship.cost_in_credits,
-      length: starship.length,
-      crew: starship.crew,
-      passengers: starship.passengers,
-      cargoCapacity: starship.cargo_capacity,
+      name,
+      model,
+      manufacturer,
+      costInCredits: cost_in_credits,
+      length,
+      crew,
+      passengers,
+      cargoCapacity: cargo_capacity,
     };
   };
 }

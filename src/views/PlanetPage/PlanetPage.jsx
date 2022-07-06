@@ -18,12 +18,14 @@ class PlanetPage extends Component {
     });
   };
   render() {
+    const { planetId } = this.state;
+    const { getAllPlanets, getPlanet, getPlanetImage } = this.apiService;
     return (
       <div className={`row mb2 ${s.renderBox}`}>
         <div className={`col-md-6 ${s.itemListBox}`}>
           <ItemList
             onItemSelected={this.planetSelected}
-            getItem={this.apiService.getAllPlanets}
+            getItem={getAllPlanets}
             renderItem={({ name, diameter, climate }) =>
               `${name} (${diameter} miles, ${climate})`
             }
@@ -31,9 +33,9 @@ class PlanetPage extends Component {
         </div>
         <div className={`col-md-6 ${s.itemListBox}`}>
           <ItemDetails
-            itemId={this.state.planetId}
-            getResult={this.apiService.getPlanet}
-            getImageUrl={this.apiService.getPlanetImage}
+            itemId={planetId}
+            getResult={getPlanet}
+            getImageUrl={getPlanetImage}
           >
             <RecordRow value="population" label="Population:" ending="people" />
             <RecordRow
