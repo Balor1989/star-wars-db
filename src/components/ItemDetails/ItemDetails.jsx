@@ -6,35 +6,45 @@ import s from "./ItemDetails.module.css";
 class ItemDetails extends Component {
   apiService = new ApiService();
 
-  state = { item: null, visible: false, loading: false };
+  state = {
+    item: null,
+    image: null,
+    visible: false,
+    loading: false,
+  };
 
   componentDidUpdate(prevProps) {
-    if (this.props.personId !== prevProps.personId) {
-      this.updatePerson();
+    if (this.props.itemId !== prevProps.itemId) {
+      this.updateItem();
     }
   }
 
-  updatePerson = async () => {
+  updateItem = async () => {
     this.setState({ visible: false, loading: true });
-    const { personId } = this.props;
-    if (!personId) {
+    const { itemId, getImageUrl, getResult } = this.props;
+    if (!itemId) {
       return;
     }
-    const newPerson = await this.apiService.getPerson(personId);
-    return this.setState({ item: newPerson, visible: true, loading: false });
+    const newItem = await getResult(itemId);
+    return this.setState({
+      item: newItem,
+      image: getImageUrl(itemId),
+      visible: true,
+      loading: false,
+    });
   };
 
   render() {
-    const { item, visible, loading } = this.state;
+    const { item, image, visible, loading } = this.state;
     return (
-      <div className={`${s.personBox} rounded`}>
+      <div className={`${s.itemBox} rounded`}>
         {!item && !loading && <h3>Select a person from a list</h3>}
         {loading && <Spinner />}
         {visible && (
-          <div className={`${s.personDetails}`}>
+          <div className={`${s.itemDetails}`}>
             <img
               className={s.image}
-              src={`https://starwars-visualguide.com/assets/img/characters/${item.id}.jpg`}
+              src={image}
               onError={(e) =>
                 (e.target.src = `https://starwars-visualguide.com/assets/img/placeholder.jpg`)
               }

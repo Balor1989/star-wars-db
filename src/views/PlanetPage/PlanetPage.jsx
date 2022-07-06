@@ -30,7 +30,11 @@ class PlanetPage extends Component {
           />
         </div>
         <div className={`col-md-6 ${s.itemListBox}`}>
-          <ItemDetails personId={this.state.planetId} />
+          <ItemDetails
+            itemId={this.state.planetId}
+            getResult={this.apiService.getPlanet}
+            getImageUrl={this.apiService.getPlanetImage}
+          />
         </div>
       </div>
     );

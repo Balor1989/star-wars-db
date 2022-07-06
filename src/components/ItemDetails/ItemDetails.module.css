@@ -1,11 +1,11 @@
-.personBox {
+.itemBox {
   text-align: center;
   padding: 15px;
   border: 1px solid #033e4d;
   background-color: #033e4d;
 }
 
-.personDetails {
+.itemDetails {
   display: flex;
   text-align: start;
   flex-direction: row;
