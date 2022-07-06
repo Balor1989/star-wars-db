@@ -2,6 +2,7 @@ import axios from "axios";
 
 export default class ApiService {
   BASE_URL = "https://swapi.dev/api/";
+  IMAGE_URL = "https://starwars-visualguide.com/assets/img/";
 
   getResourse = async (url) => {
     try {
@@ -42,15 +43,15 @@ export default class ApiService {
   };
 
   getPlanetImage = (id) => {
-    return `https://starwars-visualguide.com/assets/img/planets/${id}.jpg`;
+    return `${this.IMAGE_URL}planets/${id}.jpg`;
   };
 
   getPersonImage = (id) => {
-    return `https://starwars-visualguide.com/assets/img/characters/${id}.jpg`;
+    return `${this.IMAGE_URL}characters/${id}.jpg`;
   };
 
   getStarshipImage = (id) => {
-    return `https://starwars-visualguide.com/assets/img/starships/${id}.jpg`;
+    return `${this.IMAGE_URL}starships/${id}.jpg`;
   };
 
   #exstractId = (item) => {
