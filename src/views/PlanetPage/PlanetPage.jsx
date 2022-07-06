@@ -1,7 +1,7 @@
 import { Component } from "react";
 import ItemDetails from "../../components/ItemDetails";
 import ItemList from "../../components/ItemList";
-
+import RecordRow from "../../components/RecordRow";
 import ApiService from "../../servises/ApiService";
 import s from "./PlanetPage.module.css";
 
@@ -34,7 +34,16 @@ class PlanetPage extends Component {
             itemId={this.state.planetId}
             getResult={this.apiService.getPlanet}
             getImageUrl={this.apiService.getPlanetImage}
-          />
+          >
+            <RecordRow value="population" label="Population:" ending="people" />
+            <RecordRow
+              value="rotationPeriod"
+              label="Rotation Period:"
+              ending="hours"
+            />
+            <RecordRow value="diameter" label="Diameter:" ending="miles" />
+            <RecordRow value="climate" label="Climate:" />
+          </ItemDetails>
         </div>
       </div>
     );

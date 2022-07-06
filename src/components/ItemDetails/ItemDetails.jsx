@@ -1,4 +1,4 @@
-import { Component } from "react";
+import { Children, cloneElement, Component } from "react";
 import ApiService from "../../servises/ApiService";
 import Spinner from "../Spinner";
 import s from "./ItemDetails.module.css";
@@ -55,7 +55,10 @@ class ItemDetails extends Component {
             <div className="card-body">
               <h4>{item.name}</h4>
               <ul className="list-group list-group-flush">
-                <li className="list-group-item">
+                {Children.map(this.props.children, (child) => {
+                  return cloneElement(child, { item });
+                })}
+                {/* <li className="list-group-item">
                   <span className={s.term}>Gender:</span>
                   <span className={s.description}>{item.gender}</span>
                 </li>
@@ -70,7 +73,7 @@ class ItemDetails extends Component {
                 <li className="list-group-item">
                   <span className={s.term}>Mass:</span>
                   <span className={s.description}> {`${item.mass} kg`}</span>
-                </li>
+                </li> */}
               </ul>
             </div>
           </div>

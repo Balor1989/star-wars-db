@@ -1,12 +1,12 @@
 import axios from "axios";
 
 export default class ApiService {
-  BASE_URL = "https://swapi.dev/api/";
-  IMAGE_URL = "https://starwars-visualguide.com/assets/img/";
+  #BASE_URL = "https://swapi.dev/api/";
+  #IMAGE_URL = "https://starwars-visualguide.com/assets/img/";
 
   getResourse = async (url) => {
     try {
-      const res = await axios.get(`${this.BASE_URL}${url}`);
+      const res = await axios.get(`${this.#BASE_URL}${url}`);
       return res.data;
     } catch (err) {
       console.error(err);
@@ -43,15 +43,15 @@ export default class ApiService {
   };
 
   getPlanetImage = (id) => {
-    return `${this.IMAGE_URL}planets/${id}.jpg`;
+    return `${this.#IMAGE_URL}planets/${id}.jpg`;
   };
 
   getPersonImage = (id) => {
-    return `${this.IMAGE_URL}characters/${id}.jpg`;
+    return `${this.#IMAGE_URL}characters/${id}.jpg`;
   };
 
   getStarshipImage = (id) => {
-    return `${this.IMAGE_URL}starships/${id}.jpg`;
+    return `${this.#IMAGE_URL}starships/${id}.jpg`;
   };
 
   #exstractId = (item) => {
