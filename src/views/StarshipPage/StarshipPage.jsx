@@ -1,6 +1,7 @@
 import { Component } from "react";
+import ItemDetails from "../../components/ItemDetails";
 import ItemList from "../../components/ItemList";
-import PersonDetails from "../../components/PersonDetails";
+import RecordRow from "../../components/RecordRow";
 import ApiService from "../../servises/ApiService";
 import s from "./StarshipPage.module.css";
 
@@ -17,17 +18,35 @@ class StarshipPage extends Component {
     });
   };
   render() {
+    const { starshipId } = this.state;
+    const { getAllStarships, getStarship, getStarshipImage } = this.apiService;
     return (
       <div className={`row mb2 ${s.renderBox}`}>
         <div className={`col-md-6 ${s.itemListBox}`}>
           <ItemList
             onItemSelected={this.starshipSelected}
-            getItem={this.apiService.getAllStarships}
+            getItem={getAllStarships}
             renderItem={({ name, model }) => `${name} (${model})`}
           />
         </div>
         <div className={`col-md-6 ${s.itemListBox}`}>
-          <PersonDetails personId={this.state.starshipId} />
+          <ItemDetails
+            itemId={starshipId}
+            getResult={getStarship}
+            getImageUrl={getStarshipImage}
+          >
+            <RecordRow value="model" label="Model:" />
+            <RecordRow value="manufacturer" label="Manufacturer:" />
+            <RecordRow value="costInCredits" label="Cost:" ending="credits" />
+            <RecordRow value="length" label="Length:" ending="m" />
+            <RecordRow value="crew" label="Crew:" ending="people" />
+            <RecordRow value="passengers" label="Passengers:" ending="people" />
+            <RecordRow
+              value="cargoCapacity"
+              label="Cargo Capacity:"
+              ending="kg"
+            />
+          </ItemDetails>
         </div>
       </div>
     );
