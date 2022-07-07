@@ -7,6 +7,8 @@ import s from "./RandomPlanet.module.css";
 class RandomPlanet extends Component {
   apiService = new ApiService();
 
+  static defaultProps = { updateInterval: 10000 };
+
   state = {
     planet: {},
     loading: true,
@@ -15,8 +17,9 @@ class RandomPlanet extends Component {
   };
 
   componentDidMount() {
+    const { updateInterval } = this.props;
     this.updatePlanet();
-    this.interval = setInterval(this.updatePlanet, 10000);
+    this.interval = setInterval(this.updatePlanet, updateInterval);
   }
   componentWillUnmount() {
     clearInterval(this.interval);

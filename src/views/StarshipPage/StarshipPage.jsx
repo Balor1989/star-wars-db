@@ -17,7 +17,6 @@ class StarshipPage extends Component {
   };
   render() {
     const { starshipId } = this.state;
-
     return (
       <ApiServiceConsumer>
         {({ getAllStarships, getStarship, getStarshipImage }) => {

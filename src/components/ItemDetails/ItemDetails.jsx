@@ -58,22 +58,6 @@ class ItemDetails extends Component {
                 {Children.map(this.props.children, (child) => {
                   return cloneElement(child, { item });
                 })}
-                {/* <li className="list-group-item">
-                  <span className={s.term}>Gender:</span>
-                  <span className={s.description}>{item.gender}</span>
-                </li>
-                <li className="list-group-item">
-                  <span className={s.term}>Birth Year:</span>
-                  <span className={s.description}>{item.birthYear}</span>
-                </li>
-                <li className="list-group-item">
-                  <span className={s.term}>Height:</span>
-                  <span className={s.description}> {`${item.height} cm`}</span>
-                </li>
-                <li className="list-group-item">
-                  <span className={s.term}>Mass:</span>
-                  <span className={s.description}> {`${item.mass} kg`}</span>
-                </li> */}
               </ul>
             </div>
           </div>
