@@ -2,6 +2,7 @@ import { Children, cloneElement, Component } from "react";
 import ApiService from "../../servises/ApiService";
 import Spinner from "../Spinner";
 import s from "./ItemDetails.module.css";
+import PropTypes from "prop-types";
 
 class ItemDetails extends Component {
   apiService = new ApiService();
@@ -67,3 +68,9 @@ class ItemDetails extends Component {
   }
 }
 export default ItemDetails;
+
+ItemDetails.propTypes = {
+  itemId: PropTypes.string,
+  getImageUrl: PropTypes.func.isRequired,
+  getResult: PropTypes.func.isRequired,
+};

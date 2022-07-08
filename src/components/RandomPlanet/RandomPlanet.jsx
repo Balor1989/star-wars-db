@@ -3,6 +3,7 @@ import ApiService from "../../servises/ApiService";
 import ErrorMessage from "../Error";
 import Spinner from "../Spinner";
 import s from "./RandomPlanet.module.css";
+import PropTypes from "prop-types";
 
 class RandomPlanet extends Component {
   apiService = new ApiService();
@@ -92,3 +93,7 @@ class RandomPlanet extends Component {
   }
 }
 export default RandomPlanet;
+
+RandomPlanet.propTypes = {
+  updateInterval: PropTypes.number,
+};

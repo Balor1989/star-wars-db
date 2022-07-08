@@ -1,4 +1,5 @@
 import s from "./RecordRow.module.css";
+import PropTypes from "prop-types";
 
 const RecordRow = ({ item, value, label, ending = "" }) => {
   return (
@@ -10,3 +11,10 @@ const RecordRow = ({ item, value, label, ending = "" }) => {
 };
 
 export default RecordRow;
+
+RecordRow.propTypes = {
+  item: PropTypes.object,
+  value: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  ending: PropTypes.string,
+};

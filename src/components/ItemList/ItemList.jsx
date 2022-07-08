@@ -1,6 +1,7 @@
 import { Component } from "react";
 import Spinner from "../Spinner";
 import s from "./ItemList.module.css";
+import PropTypes from "prop-types";
 
 class ItemList extends Component {
   state = {
@@ -10,12 +11,13 @@ class ItemList extends Component {
   };
 
   componentDidMount() {
-    this.onGetAllPeople();
+    this.onGetAllItems();
   }
 
-  onGetAllPeople = async () => {
+  onGetAllItems = async () => {
+    const { getItem } = this.props;
     try {
-      const items = await this.props.getItem();
+      const items = await getItem();
 
       return this.setState({
         items: items,
@@ -28,14 +30,15 @@ class ItemList extends Component {
   };
 
   renderItem(array) {
+    const { renderItem, onItemSelected } = this.props;
     return array.map((item) => {
       const { id } = item;
-      const name = this.props.renderItem(item);
+      const name = renderItem(item);
       return (
         <li
           key={id}
           className={`list-group-item ${s.item}`}
-          onClick={() => this.props.onItemSelected(id)}
+          onClick={() => onItemSelected(id)}
         >
           {name}
         </li>
@@ -58,3 +61,9 @@ class ItemList extends Component {
   }
 }
 export default ItemList;
+
+ItemList.propTypes = {
+  getItem: PropTypes.func.isRequired,
+  renderItem: PropTypes.func.isRequired,
+  onItemSelected: PropTypes.func.isRequired,
+};
