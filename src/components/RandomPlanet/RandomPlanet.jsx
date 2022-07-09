@@ -1,9 +1,9 @@
-import { Component } from "react";
-import ApiService from "../../servises/ApiService";
-import ErrorMessage from "../Error";
-import Spinner from "../Spinner";
-import s from "./RandomPlanet.module.css";
-import PropTypes from "prop-types";
+import { Component } from 'react';
+import ApiService from '../../servises/ApiService';
+import ErrorMessage from '../Error';
+import Spinner from '../Spinner';
+import s from './RandomPlanet.module.css';
+import PropTypes from 'prop-types';
 
 class RandomPlanet extends Component {
   apiService = new ApiService();
@@ -58,7 +58,7 @@ class RandomPlanet extends Component {
             <img
               className={s.planetImage}
               src={this.apiService.getPlanetImage(id)}
-              onError={(e) =>
+              onError={e =>
                 (e.target.src = `https://starwars-visualguide.com/assets/img/placeholder.jpg`)
               }
               alt="planet"

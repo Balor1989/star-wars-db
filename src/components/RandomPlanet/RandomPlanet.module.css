@@ -16,6 +16,14 @@
   border-radius: 10px;
   margin-right: 15px;
 }
+
+@media screen and (max-width: 480px) {
+  .planetImage {
+    width: 100px;
+    height: 100px;
+  }
+}
+
 .planetTitle {
   font-size: 20px;
 }
