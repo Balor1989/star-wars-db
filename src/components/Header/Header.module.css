@@ -10,6 +10,11 @@
   .header {
     flex-direction: column;
   }
+  .itemBox {
+    margin-top: 15px;
+    border: 1px solid #033e4d;
+    border-radius: 10px;
+  }
   .headerTitle {
     margin-right: 0;
   }
