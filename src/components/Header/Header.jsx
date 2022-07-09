@@ -1,5 +1,5 @@
 import s from "./Header.module.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 
 const Header = () => {
   const activeLink = ({ isActive }) =>
@@ -7,7 +7,7 @@ const Header = () => {
   return (
     <header className={`d-flex align-items-center ${s.header}`}>
       <h1 className={s.headerTitle}>
-        <a href="./index.html ">Star Wars</a>
+        <Link to="/">Star Wars</Link>
       </h1>
       <nav>
         <ul className="d-flex">
