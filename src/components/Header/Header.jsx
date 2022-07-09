@@ -1,4 +1,5 @@
 import s from "./Header.module.css";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -8,9 +9,15 @@ const Header = () => {
       </h1>
       <nav>
         <ul className="d-flex">
-          <li className={s.navItem}>People</li>
-          <li className={s.navItem}>Planets</li>
-          <li className={s.navItem}>Starships</li>
+          <li className={s.navItem}>
+            <Link to="/people">People</Link>
+          </li>
+          <li className={s.navItem}>
+            <Link to="/planets">Planets</Link>
+          </li>
+          <li className={s.navItem}>
+            <Link to="/starships">Starships</Link>
+          </li>
         </ul>
       </nav>
     </header>
