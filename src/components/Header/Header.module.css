@@ -14,16 +14,8 @@
   transition: background-color 300ms ease;
 }
 
-.navItem a {
-  text-decoration: none;
-  color: #839496;
-}
-
-.navItem:hover {
-  background-color: #444;
-}
-
-.headerTitle a:hover {
+.headerTitle a:hover,
+.headerTitle a:focus {
   text-decoration: underline;
   color: #ffffff;
 }
@@ -36,4 +28,30 @@
 
 .headerTitle {
   margin-right: 100px;
+}
+
+.link {
+  text-decoration: none;
+  border-radius: 15px;
+  cursor: pointer;
+  padding: 10px 15px;
+  font-size: 22px;
+  font-weight: 700;
+
+  color: #839496;
+  transition: color 300ms ease, background-color 300ms ease;
+}
+
+.link:first-child {
+  margin-right: 10px;
+}
+.link:hover,
+.link:focus {
+  background-color: #444;
+  color: #ffffff;
+}
+
+.link.activeLink {
+  background-color: #444;
+  color: #ffffff;
 }

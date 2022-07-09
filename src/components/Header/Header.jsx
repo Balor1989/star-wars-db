@@ -1,7 +1,9 @@
 import s from "./Header.module.css";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Header = () => {
+  const activeLink = ({ isActive }) =>
+    isActive ? `${s.link} ${s.activeLink}` : s.link;
   return (
     <header className={`d-flex align-items-center ${s.header}`}>
       <h1 className={s.headerTitle}>
@@ -10,13 +12,19 @@ const Header = () => {
       <nav>
         <ul className="d-flex">
           <li className={s.navItem}>
-            <Link to="/people">People</Link>
+            <NavLink to="/people" className={activeLink}>
+              People
+            </NavLink>
           </li>
           <li className={s.navItem}>
-            <Link to="/planets">Planets</Link>
+            <NavLink to="/planets" className={activeLink}>
+              Planets
+            </NavLink>
           </li>
           <li className={s.navItem}>
-            <Link to="/starships">Starships</Link>
+            <NavLink to="/starships" className={activeLink}>
+              Starships
+            </NavLink>
           </li>
         </ul>
       </nav>
