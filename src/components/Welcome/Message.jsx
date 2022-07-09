@@ -1,4 +1,5 @@
 import s from "./Message.module.css";
+import PropTypes from "prop-types";
 
 const Message = ({ value = "Welcome to Star Wars DB" }) => {
   return (
@@ -9,3 +10,7 @@ const Message = ({ value = "Welcome to Star Wars DB" }) => {
 };
 
 export default Message;
+
+Message.propTypes = {
+  value: PropTypes.string,
+};
