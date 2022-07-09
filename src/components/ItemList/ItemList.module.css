@@ -18,3 +18,9 @@
 .item:hover {
   background-color: #444;
 }
+
+@media screen and (max-width: 767px) {
+  .itemBox {
+    margin-bottom: 30px;
+  }
+}

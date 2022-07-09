@@ -3,9 +3,21 @@
   padding-left: 15px;
   padding-right: 15px;
   padding-bottom: 30px;
+  flex-wrap: wrap;
+}
+@media screen and (max-width: 767px) {
+  .itemBox,
+  .header {
+    flex-direction: column;
+  }
+  .headerTitle {
+    margin-right: 0;
+  }
 }
 
 .navItem {
+  display: flex;
+  justify-content: center;
   cursor: pointer;
   list-style: none;
   margin: 0;
@@ -26,10 +38,6 @@
   transition: text-decoration 300ms ease, color 300ms ease;
 }
 
-.headerTitle {
-  margin-right: 100px;
-}
-
 .link {
   text-decoration: none;
   border-radius: 15px;
@@ -42,8 +50,13 @@
   transition: color 300ms ease, background-color 300ms ease;
 }
 
-.link:first-child {
-  margin-right: 10px;
+@media screen and (min-width: 768px) {
+  .link:first-child {
+    margin-right: 10px;
+  }
+  .headerTitle {
+    margin-right: 100px;
+  }
 }
 .link:hover,
 .link:focus {
