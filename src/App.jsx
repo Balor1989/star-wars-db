@@ -8,7 +8,7 @@ import PlanetPage from "./views/PlanetPage";
 import StarshipPage from "./views/StarshipPage";
 import { ApiServiceProvider } from "./components/ApiServiceContext";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
-import Welcome from "./components/Welcome";
+import Message from "./components/Welcome";
 
 export default class App extends Component {
   apiService = new ApiService();
@@ -26,10 +26,11 @@ export default class App extends Component {
             <main className={s.mainContainer}>
               <RandomPlanet />
               <Routes>
-                <Route exact path="/" element={<Welcome />} />
+                <Route exact path="/" element={<Message />} />
                 <Route path="/people" element={<PeoplePage />} />
                 <Route path="/planets" element={<PlanetPage />} />
                 <Route path="/starships" element={<StarshipPage />} />
+                <Route path="*" element={<Message value="Page not found" />} />
               </Routes>
             </main>
           </div>

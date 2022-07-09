@@ -1,3 +1,3 @@
-import Welcome from "./Welcome";
+import Message from "./Message";
 
-export default Welcome;
+export default Message;
