@@ -7,6 +7,7 @@ import PeoplePage from "./views/PeoplePage";
 import PlanetPage from "./views/PlanetPage";
 import StarshipPage from "./views/StarshipPage";
 import { ApiServiceProvider } from "./components/ApiServiceContext";
+import { Route, Routes, BrowserRouter } from "react-router-dom";
 
 export default class App extends Component {
   apiService = new ApiService();
@@ -18,15 +19,19 @@ export default class App extends Component {
   render() {
     return (
       <ApiServiceProvider value={this.apiService}>
-        <div className={s.container}>
-          <Header />
-          <main className={s.mainContainer}>
-            <RandomPlanet />
-            <PeoplePage />
-            <PlanetPage />
-            <StarshipPage />
-          </main>
-        </div>
+        <BrowserRouter>
+          <div className={s.container}>
+            <Header />
+            <main className={s.mainContainer}>
+              <RandomPlanet />
+              <Routes>
+                <Route path="/people" element={<PeoplePage />} />
+                <Route path="/planets" element={<PlanetPage />} />
+                <Route path="/starships" element={<StarshipPage />} />
+              </Routes>
+            </main>
+          </div>
+        </BrowserRouter>
       </ApiServiceProvider>
     );
   }
